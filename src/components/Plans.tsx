@@ -1,79 +1,69 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Pricing } from "@/components/ui/pricing";
 
 const Plans = () => {
   const plans = [
     {
-      title: "Landing Page",
-      description: "One high-converting page, designed & built fast.",
+      name: "STARTER",
+      price: "15000",
+      yearlyPrice: "12000",
+      period: "month",
       features: [
-        "Custom design in Figma",
-        "Built in Framer (mobile-optimized & fast-loading)",
-        "3 rounds of revisions",
-        "Delivered in 7-10 days",
-        "Flat price. No retainers. No surprises."
+        "Perfect for small businesses & startups",
+        "Responsive website (up to 5 pages)",
+        "Basic SEO setup",
+        "1 monthly marketing campaign",
+        "Email support"
       ],
-      perfectFor: "campaigns, product launches, or quick marketing needs."
+      description: "Perfect for individuals and small projects",
+      buttonText: "Start Your Project",
+      href: "#contact",
+      isPopular: false,
     },
     {
-      title: "Website",
-      description: "Multi-page marketing site, handled end-to-end.",
+      name: "GROWTH",
+      price: "35000", 
+      yearlyPrice: "28000",
+      period: "month",
       features: [
-        "Figma design for up to 5 pages",
-        "Full Framer development",
-        "Mobile-first & blazing fast",
-        "3 rounds of revisions",
-        "Delivered in 15-20 days",
-        "SEO-ready, custom interactions, smooth UX"
+        "For scaling businesses",
+        "Website (up to 12 pages + blog)",
+        "Advanced SEO + Analytics",
+        "Social media management (2 platforms)",
+        "3 monthly marketing campaigns",
+        "Priority support"
       ],
-      perfectFor: "startups or brands needing a polished presence, fast."
+      description: "Ideal for growing teams and businesses",
+      buttonText: "Start Your Project",
+      href: "#contact",
+      isPopular: true,
+    },
+    {
+      name: "PRO",
+      price: "65000",
+      yearlyPrice: "52000", 
+      period: "month",
+      features: [
+        "Designed for enterprises & brands",
+        "Custom website/web app with integrations",
+        "Full SEO & performance optimization",
+        "Social media management (4 platforms)",
+        "Unlimited campaigns & strategy sessions",
+        "Dedicated account manager"
+      ],
+      description: "For large organizations with specific needs",
+      buttonText: "Start Your Project", 
+      href: "#contact",
+      isPopular: false,
     }
   ];
 
   return (
     <section className="py-20">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Plans</span>
-          </h2>
-          <p className="text-xl text-muted-foreground">Built for teams that need fast execution.</p>
-        </div>
-        
-        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {plans.map((plan, index) => (
-            <Card key={index} className="gradient-card border-border hover-glow relative">
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl gradient-text mb-2">{plan.title}</CardTitle>
-                <CardDescription className="text-lg text-muted-foreground">
-                  {plan.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start">
-                        <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span className="text-foreground/90">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="border-t border-border pt-6">
-                  <p className="text-sm text-muted-foreground mb-4">
-                    <span className="font-medium">Perfect for:</span> {plan.perfectFor}
-                  </p>
-                  <Button className="w-full gradient-bg hover-glow">
-                    Start Your Project
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
+      <Pricing 
+        plans={plans}
+        title="Plans"
+        description="Built for teams that need fast execution."
+      />
     </section>
   );
 };

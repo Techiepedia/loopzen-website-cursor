@@ -5,46 +5,40 @@ import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 
 const testimonials = [
   {
-    text: "Loopzen delivered a stunning website that boosted our sales by 40%. Their team is professional, creative, and incredibly efficient.",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=150&h=150&fit=crop&crop=face",
-    name: "Jane Doe",
-    role: "CEO, Innovate Inc.",
+    text: "LoopZen completely transformed our online presence. Within weeks, our engagement shot up and clients loved the sleek design.",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+    name: "Rachel Green",
+    role: "Founder, BrightPath Consulting"
   },
   {
-    text: "The user experience on our new dashboard is phenomenal. Working with Loopzen was a seamless process from start to finish.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    name: "John Smith",
-    role: "CTO, QuantumLeap",
+    text: "Their automation workflows saved us countless hours. The LoopZen team knows exactly how to blend creativity with functionality.",
+    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&h=150&fit=crop&crop=face",
+    name: "Carlos Mendoza",
+    role: "COO, NextWave Tech"
   },
   {
-    text: "Our new brand site perfectly captures our identity. The feedback from our customers has been overwhelmingly positive.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-    name: "Emily White",
-    role: "Marketing Head, Stellar Solutions",
+    text: "From branding to web development, LoopZen was our one-stop solution. Professional, fast, and super reliable.",
+    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face",
+    name: "Priya Sharma",
+    role: "Marketing Director, Zenith Global"
   },
   {
-    text: "Loopzen's design team is top-notch. They understood our vision and created a product that exceeded all our expectations.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-    name: "Michael Brown",
-    role: "Founder, Apex Digital",
+    text: "The creativity they bring to the table is unmatched. Our digital campaigns now stand out in a crowded market.",
+    image: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=150&h=150&fit=crop&crop=face",
+    name: "Alex Turner",
+    role: "Head of Growth, SkyBridge Media"
   },
   {
-    text: "The support team is exceptional, guiding us through setup and providing ongoing assistance, ensuring our satisfaction.",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face",
-    name: "Sarah Wilson",
-    role: "Project Manager, TechFlow",
-  },
-  {
-    text: "This transformed our workflow completely. The implementation was smooth and the results speak for themselves.",
-    image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face",
-    name: "David Chen",
-    role: "Operations Director, StartupX",
-  },
+    text: "LoopZen is not just a service provider, they're a partner. Their insights helped us scale smarter and faster.",
+    image: "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop&crop=face",
+    name: "Hannah Lee",
+    role: "CEO, Nova Ventures"
+  }
 ];
 
 const firstColumn = testimonials.slice(0, 2);
 const secondColumn = testimonials.slice(2, 4);
-const thirdColumn = testimonials.slice(4, 6);
+const thirdColumn = testimonials.slice(4, 5);
 
 const Testimonials = () => {
   return (
