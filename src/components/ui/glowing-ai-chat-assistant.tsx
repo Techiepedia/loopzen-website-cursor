@@ -51,7 +51,43 @@ const FloatingAiAssistant = () => {
   const chatRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  const { messages, isLoading, webhookStatus, sendMessage } = useChat();
+  // Safely get chat data with fallback
+  let messages: any[] = [];
+  let isLoading = false;
+  let webhookStatus = 'disconnected';
+  let sendMessage = () => {};
+  
+  try {
+    const chatData = useChat();
+    messages = chatData.messages || [];
+    isLoading = chatData.isLoading || false;
+    webhookStatus = chatData.webhookStatus || 'disconnected';
+    sendMessage = chatData.sendMessage || (() => {});
+  } catch (error) {
+    console.error('Error initializing chat:', error);
+    // Fallback data
+    messages = [{
+      id: 'welcome',
+      content: "Hey there! 👋 Welcome to LoopZen Digital! I'm Pixl, your AI assistant. We're your digital dream team - we design dope websites, automate boring stuff, and plug in AI magic, all wrapped in sleek futuristic vibes. How can I help you today?",
+      isUser: false,
+      timestamp: new Date()
+    }];
+    // Fallback sendMessage function
+    sendMessage = async (message: string) => {
+      console.log('Fallback sendMessage called with:', message);
+      // Add a simple response
+      const response = {
+        id: Date.now().toString(),
+        content: "Thanks for your message! I'm currently in offline mode, but our team will get back to you soon. You can also reach us at sales@loopzen.in",
+        isUser: false,
+        timestamp: new Date()
+      };
+      messages.push(response);
+    };
+  }
+  
+  // Debug log to check if component is rendering
+  console.log('FloatingAiAssistant rendered', { isChatOpen, messagesCount: messages.length });
   
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
@@ -66,7 +102,12 @@ const FloatingAiAssistant = () => {
       const messageToSend = message.trim();
       setMessage('');
       setCharCount(0);
-      await sendMessage(messageToSend);
+      try {
+        await sendMessage(messageToSend);
+      } catch (error) {
+        console.error('Error sending message:', error);
+        // Fallback: just clear the message
+      }
     }
   };
 
@@ -105,18 +146,30 @@ const FloatingAiAssistant = () => {
     };
   }, []);
 
+  // Ensure component always renders
+  if (typeof window === 'undefined') {
+    return null; // Don't render on server side
+  }
+
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-50" style={{ zIndex: 9999 }}>
+      {/* Debug indicator */}
+      <div className="absolute -top-2 -left-2 w-4 h-4 bg-red-500 rounded-full animate-pulse" title="Chatbot is loaded"></div>
+      
       {/* Floating 3D Glowing AI Logo */}
               <button 
                 className={`floating-ai-button relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 transform ${
                   isChatOpen ? 'rotate-90' : 'rotate-0'
                 }`}
-                onClick={() => setIsChatOpen(!isChatOpen)}
+                onClick={() => {
+                  console.log('Chat button clicked, isChatOpen:', isChatOpen);
+                  setIsChatOpen(!isChatOpen);
+                }}
                 style={{
                   background: 'linear-gradient(135deg, hsl(141, 76%, 59%, 0.9) 0%, hsl(141, 76%, 49%, 0.9) 100%)',
                   boxShadow: '0 0 20px hsla(141, 76%, 59%, 0.7), 0 0 40px hsla(141, 76%, 59%, 0.5), 0 0 60px hsla(141, 76%, 59%, 0.3)',
                   border: '2px solid rgba(255, 255, 255, 0.2)',
+                  zIndex: 9999,
                 }}
               >
         {/* 3D effect */}
@@ -380,3 +433,4 @@ const FloatingAiAssistant = () => {
 };
 
 export { FloatingAiAssistant };
+export default FloatingAiAssistant;
