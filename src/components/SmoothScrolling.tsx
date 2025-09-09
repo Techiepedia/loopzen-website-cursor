@@ -2,10 +2,13 @@ import { ReactLenis } from "@studio-freight/react-lenis";
 
 function SmoothScrolling({ children }: { children: React.ReactNode }) {
   const lenisOptions = {
-    lerp: 0.1,         // Controls how smooth the scrolling is
-    duration: 1.5,     // Slows down or speeds up the scrolling
-    smoothTouch: false, // Disable smooth scroll on touch devices
-    smooth: true,      // Smooth scroll for desktop (obviously)
+    // Higher lerp = less smoothing, snappier feel
+    lerp: 0.2,
+    // Let Lenis compute duration dynamically for jumps (avoid sluggish feel)
+    // duration removed
+    // Enable smooth on touch but keep it responsive
+    smoothTouch: true,
+    smooth: true,
   };
 
   return (

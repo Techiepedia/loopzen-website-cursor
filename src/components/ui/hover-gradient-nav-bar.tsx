@@ -99,8 +99,8 @@ function HoverGradientNavBar(): React.JSX.Element {
                     <ScrollLink
                       to={item.href.substring(1)}
                       smooth={true}
-                      duration={500}
-                      offset={-80}
+                      duration={350}
+                      offset={-72}
                       className="flex items-center gap-2 cursor-pointer"
                     >
                       <span className={`transition-colors duration-300 ${item.iconColor}`}>
@@ -136,8 +136,8 @@ function HoverGradientNavBar(): React.JSX.Element {
                     <ScrollLink
                       to={item.href.substring(1)}
                       smooth={true}
-                      duration={500}
-                      offset={-80}
+                      duration={350}
+                      offset={-72}
                       className="flex items-center gap-2 cursor-pointer"
                     >
                       <span className={`transition-colors duration-300 ${item.iconColor}`}>
