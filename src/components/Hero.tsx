@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
@@ -13,26 +14,24 @@ const Hero = () => {
           ref={titleRef as any}
           className={`text-5xl md:text-7xl font-bold mb-6 leading-tight scroll-reveal ${titleVisible ? 'revealed' : ''}`}
         >
-          We build websites that turn{" "}
-          <span className="gradient-text">visitors into paying customers</span>
+          LoopZen makes websites that {" "}
+          <span className="gradient-text text-glow">turn scrolls into sales</span>
         </h1>
         <p 
           ref={descRef as any}
           className={`text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed scroll-reveal ${descVisible ? 'revealed' : ''}`}
         >
-          High-converting websites designed with strategic copy and seamless development 
-          to attract ready-to-buy customers—helping brands worldwide turn visitors into 
-          loyal clients and drive growth.
+          No boring sites. No dead vibes. Just bold, high-converting designs + smart strategies that grab attention, hook visitors, and keep the cash flowin’.
         </p>
         <div ref={buttonRef as any} className={`scroll-reveal-scale ${buttonVisible ? 'revealed' : ''}`}>
-          <a href="/booking">
+          <Link to="/booking">
             <Button 
               size="lg" 
               className="gradient-bg hover-glow text-lg px-8 py-4 rounded-full"
             >
               Book a Free Consultation
             </Button>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

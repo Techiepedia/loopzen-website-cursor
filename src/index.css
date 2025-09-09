@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+All colors MUST be HSL...
 */
 
 @layer base {
@@ -101,6 +101,97 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-card);
   }
 
+  /* Text glow effects */
+  .text-glow {
+    text-shadow: 
+      0 0 20px hsla(141, 76%, 59%, 0.8),
+      0 0 40px hsla(141, 76%, 59%, 0.6),
+      0 0 60px hsla(141, 76%, 59%, 0.4);
+  }
+
+  .text-glow-strong {
+    text-shadow: 
+      0 0 30px hsla(141, 76%, 59%, 1),
+      0 0 60px hsla(141, 76%, 59%, 0.8),
+      0 0 90px hsla(141, 76%, 59%, 0.6),
+      0 0 120px hsla(141, 76%, 59%, 0.4);
+  }
+
+  .text-glow-subtle {
+    text-shadow: 
+      0 0 15px hsla(141, 76%, 59%, 0.6),
+      0 0 30px hsla(141, 76%, 59%, 0.4),
+      0 0 45px hsla(141, 76%, 59%, 0.2);
+  }
+
+  /* Ambient background glow effects */
+  .ambient-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ambient-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -30%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(
+      ellipse at center,
+      hsla(141, 76%, 59%, 0.25) 0%,
+      hsla(141, 76%, 59%, 0.15) 20%,
+      hsla(141, 76%, 59%, 0.08) 40%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    z-index: -1;
+    animation: ambient-pulse 4s ease-in-out infinite;
+    filter: blur(40px);
+  }
+
+  .ambient-glow::after {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 40%;
+    height: 150%;
+    background: radial-gradient(
+      ellipse at center,
+      hsla(141, 76%, 59%, 0.2) 0%,
+      hsla(141, 76%, 59%, 0.1) 25%,
+      hsla(141, 76%, 59%, 0.05) 50%,
+      transparent 75%
+    );
+    border-radius: 50%;
+    z-index: -1;
+    animation: ambient-pulse-delayed 5s ease-in-out infinite;
+    filter: blur(50px);
+  }
+
+  .ambient-glow-strong::before {
+    background: radial-gradient(
+      ellipse at center,
+      hsla(141, 76%, 59%, 0.35) 0%,
+      hsla(141, 76%, 59%, 0.2) 15%,
+      hsla(141, 76%, 59%, 0.1) 35%,
+      transparent 65%
+    );
+    filter: blur(60px);
+  }
+
+  .ambient-glow-strong::after {
+    background: radial-gradient(
+      ellipse at center,
+      hsla(141, 76%, 59%, 0.3) 0%,
+      hsla(141, 76%, 59%, 0.15) 20%,
+      hsla(141, 76%, 59%, 0.08) 45%,
+      transparent 70%
+    );
+    filter: blur(70px);
+  }
+
   /* Infinite scroll animations */
   .scroll-left {
     animation: scroll-left var(--scroll-speed) linear infinite;
@@ -194,5 +285,49 @@ All colors MUST be HSL.
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-glow-strong {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes ambient-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(2deg);
+  }
+}
+
+@keyframes ambient-pulse-delayed {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.15) rotate(-1deg);
   }
 }
