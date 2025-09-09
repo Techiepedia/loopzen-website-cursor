@@ -2,6 +2,8 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Home, Calendar, Info, Mail } from 'lucide-react';
+import { Link as ScrollLink } from 'react-scroll';
+import { Link as RouterLink } from 'react-router-dom';
 
 // --- HoverGradientNavBar Component ---
 
@@ -80,8 +82,7 @@ function HoverGradientNavBar(): React.JSX.Element {
                   }}
                 />
                 {/* Front-facing */}
-                <motion.a
-                  href={item.href}
+                <motion.div
                   className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-2 
                   px-2 py-1.5 md:px-4 md:py-2 relative z-10 
                   bg-transparent text-gray-300 dark:text-gray-300 
@@ -94,14 +95,30 @@ function HoverGradientNavBar(): React.JSX.Element {
                     transformOrigin: "center bottom"
                   }}
                 >
-                  <span className={`transition-colors duration-300 ${item.iconColor}`}>
-                    {item.icon}
-                  </span>
-                  <span className="hidden md:inline font-medium">{item.label}</span>
-                </motion.a>
+                  {item.href.startsWith('#') ? (
+                    <ScrollLink
+                      to={item.href.substring(1)}
+                      smooth={true}
+                      duration={500}
+                      offset={-80}
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
+                      <span className={`transition-colors duration-300 ${item.iconColor}`}>
+                        {item.icon}
+                      </span>
+                      <span className="hidden md:inline font-medium">{item.label}</span>
+                    </ScrollLink>
+                  ) : (
+                    <RouterLink to={item.href} className="flex items-center gap-2">
+                      <span className={`transition-colors duration-300 ${item.iconColor}`}>
+                        {item.icon}
+                      </span>
+                      <span className="hidden md:inline font-medium">{item.label}</span>
+                    </RouterLink>
+                  )}
+                </motion.div>
                 {/* Back-facing */}
-                <motion.a
-                  href={item.href}
+                <motion.div
                   className="flex flex-col md:flex-row items-center justify-center gap-0.5 md:gap-2 
                   px-2 py-1.5 md:px-4 md:py-2 absolute inset-0 z-10 
                   bg-transparent text-gray-300 dark:text-gray-300 
@@ -115,11 +132,28 @@ function HoverGradientNavBar(): React.JSX.Element {
                     transform: "rotateX(90deg)"
                   }}
                 >
-                  <span className={`transition-colors duration-300 ${item.iconColor}`}>
-                    {item.icon}
-                  </span>
-                  <span className="hidden md:inline font-medium">{item.label}</span>
-                </motion.a>
+                  {item.href.startsWith('#') ? (
+                    <ScrollLink
+                      to={item.href.substring(1)}
+                      smooth={true}
+                      duration={500}
+                      offset={-80}
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
+                      <span className={`transition-colors duration-300 ${item.iconColor}`}>
+                        {item.icon}
+                      </span>
+                      <span className="hidden md:inline font-medium">{item.label}</span>
+                    </ScrollLink>
+                  ) : (
+                    <RouterLink to={item.href} className="flex items-center gap-2">
+                      <span className={`transition-colors duration-300 ${item.iconColor}`}>
+                        {item.icon}
+                      </span>
+                      <span className="hidden md:inline font-medium">{item.label}</span>
+                    </RouterLink>
+                  )}
+                </motion.div>
               </motion.div>
             </motion.li>
           ))}
