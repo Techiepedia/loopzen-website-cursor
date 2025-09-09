@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Home, Phone, User, Mail, BarChart3, HelpCircle, Settings, Users } from 'lucide-react';
+import { Home, Calendar, Info, Mail } from 'lucide-react';
 
 // --- HoverGradientNavBar Component ---
 
@@ -14,12 +14,10 @@ interface HoverGradientMenuItem {
 }
 
 const menuItems: HoverGradientMenuItem[] = [
-  { icon: <Home className="h-5 w-5" />, label: "Home", href: "#", gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)", iconColor: "group-hover:text-green-500 dark:group-hover:text-green-400" },
-  { icon: <Users className="h-5 w-5" />, label: "Case Studies", href: "#", gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)", iconColor: "group-hover:text-green-500 dark:group-hover:text-green-400" },
-  { icon: <BarChart3 className="h-5 w-5" />, label: "Benefits", href: "#", gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)", iconColor: "group-hover:text-green-500 dark:group-hover:text-green-400" },
-  { icon: <Settings className="h-5 w-5" />, label: "Plans", href: "#", gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)", iconColor: "group-hover:text-green-500 dark:group-hover:text-green-400" },
-  { icon: <Mail className="h-5 w-5" />, label: "Contact", href: "#", gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)", iconColor: "group-hover:text-green-500 dark:group-hover:text-green-400" },
-  { icon: <Phone className="h-5 w-5" />, label: "Book Call", href: "#", gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)", iconColor: "group-hover:text-green-500 dark:group-hover:text-green-400" },
+  { icon: <Home className="h-5 w-5" />, label: "Home", href: "/", gradient: "radial-gradient(circle, rgba(83,211,100,0.15) 0%, rgba(83,211,100,0.06) 50%, rgba(83,211,100,0) 100%)", iconColor: "group-hover:text-primary" },
+  { icon: <Calendar className="h-5 w-5" />, label: "Book Meeting", href: "/booking", gradient: "radial-gradient(circle, rgba(83,211,100,0.15) 0%, rgba(83,211,100,0.06) 50%, rgba(83,211,100,0) 100%)", iconColor: "group-hover:text-primary" },
+  { icon: <Info className="h-5 w-5" />, label: "About", href: "#benefits", gradient: "radial-gradient(circle, rgba(83,211,100,0.15) 0%, rgba(83,211,100,0.06) 50%, rgba(83,211,100,0) 100%)", iconColor: "group-hover:text-primary" },
+  { icon: <Mail className="h-5 w-5" />, label: "Contact", href: "#contact", gradient: "radial-gradient(circle, rgba(83,211,100,0.15) 0%, rgba(83,211,100,0.06) 50%, rgba(83,211,100,0) 100%)", iconColor: "group-hover:text-primary" },
 ];
 
 // Animation variants
@@ -54,7 +52,7 @@ const sharedTransition = {
 
 function HoverGradientNavBar(): React.JSX.Element {
   return (
-    <div className="fixed bottom-0 left-0 w-full md:bottom-4 md:left-1/2 md:-translate-x-1/2 z-50">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
       <motion.nav
         className="w-full md:w-fit mx-auto px-2 md:px-4 py-2 md:py-3 rounded-none md:rounded-3xl 
         bg-white/10 dark:bg-black/80 backdrop-blur-lg 
