@@ -1,4 +1,5 @@
 import { Pricing } from "@/components/ui/pricing";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Plans = () => {
   const plans = [
@@ -57,8 +58,13 @@ const Plans = () => {
     }
   ];
 
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal();
+
   return (
-    <section className="py-20">
+    <section 
+      ref={sectionRef as any}
+      className={`py-20 animate-60fps scroll-reveal ${sectionVisible ? 'revealed' : ''}`}
+    >
       <Pricing 
         plans={plans}
         title="Plans"

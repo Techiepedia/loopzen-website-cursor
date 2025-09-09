@@ -1,7 +1,6 @@
-"use client";
-import React from "react";
-import { motion } from "motion/react";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
+import { motion } from "framer-motion";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const testimonials = [
   {
@@ -41,15 +40,15 @@ const secondColumn = testimonials.slice(2, 4);
 const thirdColumn = testimonials.slice(4, 5);
 
 const Testimonials = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
+  const { ref: columnsRef, isVisible: columnsVisible } = useScrollReveal({ delay: 300 });
+
   return (
-    <section className="bg-background my-20 relative">
+    <section className="bg-background my-20 relative animate-60fps">
       <div className="container z-10 mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
-          className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
+        <div
+          ref={titleRef as any}
+          className={`flex flex-col items-center justify-center max-w-[540px] mx-auto scroll-reveal ${titleVisible ? 'revealed' : ''}`}
         >
           <div className="flex justify-center">
             <div className="border py-2 px-6 rounded-lg gradient-text border-primary/30 bg-primary/10">
@@ -63,9 +62,12 @@ const Testimonials = () => {
           <p className="text-center mt-5 text-muted-foreground">
             See what our customers have to say about us.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
+        <div 
+          ref={columnsRef as any}
+          className={`flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden scroll-reveal ${columnsVisible ? 'revealed' : ''}`}
+        >
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />

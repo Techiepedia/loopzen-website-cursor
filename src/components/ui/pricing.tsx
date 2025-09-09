@@ -143,7 +143,7 @@ export function Pricing({
                 {plan.name}
               </p>
               <div className="mt-6 flex items-center justify-center gap-x-2">
-                <span className="text-5xl font-bold tracking-tight text-foreground gradient-text">
+                <span className="text-5xl font-bold tracking-tight text-white">
                   <NumberFlow
                     value={
                       isMonthly ? Number(plan.price.replace(/[^0-9]/g, '')) : Number(plan.yearlyPrice.replace(/[^0-9]/g, ''))

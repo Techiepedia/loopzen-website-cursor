@@ -51,6 +51,10 @@ All colors MUST be HSL.
     /* Animation variables */
     --scroll-speed: 30s;
     --hover-scale: 1.05;
+    
+    /* Smooth scrolling variables */
+    --scroll-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --reveal-distance: 50px;
   }
 }
 
@@ -61,6 +65,12 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-inter;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
   }
 }
 
@@ -108,6 +118,64 @@ All colors MUST be HSL.
   .hover-glow:hover {
     box-shadow: var(--shadow-glow);
     transform: scale(var(--hover-scale));
+  }
+  
+  /* Scroll reveal animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance));
+    transition: all 0.8s var(--scroll-ease);
+  }
+  
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-var(--reveal-distance));
+    transition: all 0.8s var(--scroll-ease);
+  }
+  
+  .scroll-reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(var(--reveal-distance));
+    transition: all 0.8s var(--scroll-ease);
+  }
+  
+  .scroll-reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.8s var(--scroll-ease);
+  }
+  
+  .scroll-reveal-scale.revealed {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Smooth scrolling for better performance */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Improved 60fps animations */
+  .animate-60fps {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 }
 

@@ -1,4 +1,5 @@
 import { Grid3X3, Zap, Puzzle, Monitor, Users, Infinity } from "lucide-react";
+import { useScrollReveal, useScrollRevealMultiple } from "@/hooks/useScrollReveal";
 
 const Benefits = () => {
   const benefits = [
@@ -34,19 +35,35 @@ const Benefits = () => {
     }
   ];
 
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
+  const { ref: subtitleRef, isVisible: subtitleVisible } = useScrollReveal({ delay: 200 });
+  const { setRef, visibleItems } = useScrollRevealMultiple(benefits.length, { delay: 400 });
+
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-background animate-60fps" id="benefits">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 
+            ref={titleRef as any}
+            className={`text-4xl md:text-5xl font-bold mb-4 text-white scroll-reveal ${titleVisible ? 'revealed' : ''}`}
+          >
             Benefits
           </h2>
-          <p className="text-2xl md:text-3xl font-bold gradient-text">We run behind results</p>
+          <p 
+            ref={subtitleRef as any}
+            className={`text-2xl md:text-3xl font-bold gradient-text scroll-reveal ${subtitleVisible ? 'revealed' : ''}`}
+          >
+            We run behind results
+          </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {benefits.map((benefit, index) => (
-            <div key={index} className="text-left space-y-4">
+            <div 
+              key={index} 
+              ref={setRef(index) as any}
+              className={`text-left space-y-4 scroll-reveal ${visibleItems[index] ? 'revealed' : ''}`}
+            >
               <div className="border border-primary/20 rounded-lg p-4 w-fit">
                 {benefit.icon}
               </div>
