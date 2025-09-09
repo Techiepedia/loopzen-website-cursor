@@ -6,6 +6,7 @@ import Testimonials from "@/components/Testimonials";
 import Benefits from "@/components/Benefits";
 import Plans from "@/components/Plans";
 import FAQ from "@/components/FAQ";
+import Contact from "@/components/Contact";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -21,6 +22,7 @@ const Index = () => {
         <Benefits />
         <Plans />
         <FAQ />
+        <Contact />
         <FinalCTA />
       </main>
       <Footer />

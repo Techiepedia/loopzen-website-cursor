@@ -25,12 +25,14 @@ const Hero = () => {
           loyal clients and drive growth.
         </p>
         <div ref={buttonRef as any} className={`scroll-reveal-scale ${buttonVisible ? 'revealed' : ''}`}>
-          <Button 
-            size="lg" 
-            className="gradient-bg hover-glow text-lg px-8 py-4 rounded-full"
-          >
-            Book a Free Consultation
-          </Button>
+          <a href="/booking">
+            <Button 
+              size="lg" 
+              className="gradient-bg hover-glow text-lg px-8 py-4 rounded-full"
+            >
+              Book a Free Consultation
+            </Button>
+          </a>
         </div>
       </div>
     </section>
