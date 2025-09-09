@@ -18,7 +18,7 @@ const menuItems: HoverGradientMenuItem[] = [
   { icon: <Home className="h-5 w-5" />, label: "Home", href: "/", gradient: "radial-gradient(circle, rgba(83,211,100,0.15) 0%, rgba(83,211,100,0.06) 50%, rgba(83,211,100,0) 100%)", iconColor: "group-hover:text-primary" },
   { icon: <Calendar className="h-5 w-5" />, label: "Book Meeting", href: "/booking", gradient: "radial-gradient(circle, rgba(83,211,100,0.15) 0%, rgba(83,211,100,0.06) 50%, rgba(83,211,100,0) 100%)", iconColor: "group-hover:text-primary" },
   { icon: <Info className="h-5 w-5" />, label: "About", href: "#benefits", gradient: "radial-gradient(circle, rgba(83,211,100,0.15) 0%, rgba(83,211,100,0.06) 50%, rgba(83,211,100,0) 100%)", iconColor: "group-hover:text-primary" },
-  { icon: <Mail className="h-5 w-5" />, label: "Contact", href: "#contact", gradient: "radial-gradient(circle, rgba(83,211,100,0.15) 0%, rgba(83,211,100,0.06) 50%, rgba(83,211,100,0) 100%)", iconColor: "group-hover:text-primary" },
+  { icon: <Mail className="h-5 w-5" />, label: "Contact", href: "/contact", gradient: "radial-gradient(circle, rgba(83,211,100,0.15) 0%, rgba(83,211,100,0.06) 50%, rgba(83,211,100,0) 100%)", iconColor: "group-hover:text-primary" },
 ];
 
 // Animation variants
