@@ -18,7 +18,7 @@ All colors MUST be HSL.
     --popover: 0 0% 3%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 316 100% 74%;
+    --primary: 141 76% 59%;
     --primary-foreground: 0 0% 0%;
 
     --secondary: 0 0% 8%;
@@ -27,7 +27,7 @@ All colors MUST be HSL.
     --muted: 0 0% 8%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 316 100% 74%;
+    --accent: 141 76% 59%;
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
@@ -35,17 +35,17 @@ All colors MUST be HSL.
 
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 316 100% 74%;
+    --ring: 141 76% 59%;
 
     --radius: 0.75rem;
 
     /* Loopzen specific colors */
-    --gradient-primary: linear-gradient(135deg, hsl(316 100% 74%), hsl(290 100% 68%));
+    --gradient-primary: linear-gradient(135deg, hsl(141 76% 59%), hsl(141 76% 49%));
     --gradient-secondary: linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 15%));
-    --gradient-text: linear-gradient(135deg, hsl(316 100% 74%), hsl(290 100% 68%));
+    --gradient-text: linear-gradient(135deg, hsl(141 76% 59%), hsl(141 76% 49%));
     
     /* Shadows with gradient glow */
-    --shadow-glow: 0 0 50px hsla(316, 100%, 74%, 0.3);
+    --shadow-glow: 0 0 50px hsla(141, 76%, 59%, 0.3);
     --shadow-card: 0 10px 30px -10px hsla(0, 0%, 0%, 0.5);
     
     /* Animation variables */
