@@ -1,6 +1,7 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Phone, Mail, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
@@ -70,14 +71,14 @@ const Contact = () => {
                 Schedule a free consultation call and let's discuss how LoopZen can help transform your digital presence.
               </p>
               <div className="space-y-4">
-                <a href="/booking" className="block">
+                <Link to="/booking" className="block">
                   <Button 
                     size="lg" 
                     className="w-full gradient-bg hover-glow text-lg py-3"
                   >
                     Book a Free Consultation
                   </Button>
-                </a>
+                </Link>
                 <a href="mailto:sales@loopzen.in" className="block">
                   <Button 
                     variant="outline" 
